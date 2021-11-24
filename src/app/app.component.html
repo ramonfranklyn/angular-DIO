@@ -4,8 +4,10 @@
   [ngStyle]="{background: count < 5 ? 'red' : 'green'}"
   [ngClass]="{custom: count > 5}"
 >
-
   <h3 class="text-center">Contador: {{ count }}</h3>
 
 </div>
 
+<!-- Diretivas Estruturais -->
+
+<h3 class="text-center" *ngIf="count > 7 ">O contador passou de 7!</h3>
