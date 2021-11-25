@@ -1,5 +1,7 @@
 <h1 class="text-success text-center">Live Angular Diretivas</h1>
 
+
+<!-- Diretivas de Atributo -->
 <div
   [ngStyle]="{background: count < 5 ? 'red' : 'green'}"
   [ngClass]="{custom: count > 5}"
@@ -8,6 +10,61 @@
 
 </div>
 
-<!-- Diretivas Estruturais -->
 
-<h3 class="text-center" *ngIf="count > 7 ">O contador passou de 7!</h3>
+<!-- Diretivas Estruturais -->
+<h3 class="text-center" *ngIf="count > 7; else menor">O contador passou de 7!</h3>
+
+
+<!-- ngIf -->
+<ng-template [ngIf]="count > 7">
+  <h3 class="text-center">O contador é MAIOR que 7!</h3>
+</ng-template>
+
+<ng-template #menor>
+  <h3 class="text-center">O contador é MENOR que 7!</h3>
+</ng-template>
+
+
+<!-- ngSwitch -->
+<ul [ngSwitch]="count" class="list-group mx-auto col-3">
+  <li
+    class="list-group-item"
+    *ngSwitchCase="3"
+  >É igual a 3
+  </li>
+  <li
+    class="list-group-item"
+    *ngSwitchCase="5"
+  >É igual a 5
+  </li>
+  <li
+    class="list-group-item"
+    *ngSwitchCase="8"
+  >É igual a 8
+  </li>
+  <li
+    class="list-group-item"
+    *ngSwitchDefault
+  >Este é o default
+  </li>
+</ul>
+
+
+<!-- ngFor -->
+<ul class="list-group mx-auto my-3 col-3">
+  <li
+    class="list-group-item"
+    *ngFor="let pessoa of pessoas"
+  >
+    O nome da pessoa é {{pessoa.nome}} {{pessoa.sobrenome}}.
+  </li>
+</ul>
+
+<ul class="list-group mx-auto my-3 col-3">
+  <ng-template ngFor let-pessoa [ngForOf]="pessoas">
+    <li class="list-group-item">
+      O nome da pessoa é {{pessoa.nome}} {{pessoa.sobrenome}}.
+    </li>
+  </ng-template>
+</ul>
+
